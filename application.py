@@ -17,7 +17,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/scrape', methods=['POST'])
+@app.route('https://final-accupi.vercel.app/scrape', methods=['POST'])
 def scrape():
     files = request.files.getlist('files')
     input_folder = '/tmp/input_files'
@@ -62,7 +62,7 @@ def scrape():
                     search_input.clear()
                     search_input.send_keys(part_number)
                     WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, "//button[@id='submitQuickSearchButton']"))).click()
-
+ 
                     time.sleep(5)
 
                     page_source = driver.page_source
